@@ -16,7 +16,7 @@ node {
     }
 
     stage('Build'){
-        sh "mvn clean install roi nhe"
+        sh "mvn clean install "
     }
 
     stage('Sonar'){
