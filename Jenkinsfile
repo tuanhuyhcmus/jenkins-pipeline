@@ -16,7 +16,7 @@ node {
     }
 
     stage('Build'){
-        sh "mvn clean install"
+        sh "mvn clean install roi nhe"
     }
 
     stage('Sonar'){
@@ -56,14 +56,14 @@ def imagePrune(containerName){
 
 def imageBuild(containerName, tag){
     sh "docker build -t $containerName:$tag  -t $containerName --pull --no-cache ."
-    echo "Image build complete"
+    echo "Image build complete roi nhe"
 }
 
 def pushToImage(containerName, tag, dockerUser, dockerPassword){
     sh "docker login -u $dockerUser -p $dockerPassword"
     sh "docker tag $containerName:$tag $dockerUser/$containerName:$tag"
     sh "docker push $dockerUser/$containerName:$tag"
-    echo "Image push complete"
+    echo "Image push complete re nhoi"
 }
 
 def runApp(containerName, tag, dockerHubUser, httpPort){
