@@ -11,6 +11,9 @@ node {
         env.PATH = "${dockerHome}/bin:${mavenHome}/bin:${env.PATH}"
     }
 
+    stage('Path Variables') {
+        sh "pwd"
+    }
     stage('Checkout') {
         checkout scm
     }
@@ -22,6 +25,7 @@ node {
     stage('Sonar'){
         try {
             sh "mvn sonar:sonar"
+     
         } catch(error){
             echo "The sonar server could not be reached ${error}"
         }
